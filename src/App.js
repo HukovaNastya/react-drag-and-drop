@@ -1,8 +1,6 @@
 import Title from './components/Title';
 import './App.css';
-import './assets/img/UploadImg.png';
-// import uploadImg from './assets/img/UploadImg.png';
-import UploadImg from './components/UploadImg';
+import DragAndDropArea from './components/DragAndDropArea';
 
 function App() {
   return (
@@ -14,13 +12,7 @@ function App() {
         le to a certain area to upload it.
         </span>
       </p>
-      <div className='drag-and-drop-wrapper'>
-        <div className="drop-file-input__label">
-          <UploadImg/>
-          <p>Drag & Drop your files <span>here or Click to browse file</span></p>
-        </div>
-        <input type="file" value="" onChange={() => console.log('Hello word!')}/>
-      </div>
+      <DragAndDropArea/>
     </div>
   );
 }
