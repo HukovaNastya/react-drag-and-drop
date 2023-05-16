@@ -29,4 +29,37 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.drop-file-input__label {
+  padding-top: 80px;
+  text-align: center;
+  /* filter: opacity(0.5) drop-shadow(0 0 #e7d8ed); */
+}
+
+.drop-file-input__label p{
+  font-weight: 600;
+  font-size: 14px;
+  color: #D2B7DF;
+  max-width: 200px;
+  padding-top: 10px;
+}
+
+.drop-file-input__label span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #e7d8ed;
+}
+
+.drag-and-drop-wrapper input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
