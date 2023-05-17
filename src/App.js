@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import Title from './components/Title';
 import './App.css';
 import DragAndDropArea from './components/DragAndDropArea';
@@ -19,10 +19,6 @@ function App() {
 
   const findFileFormat = (file) => {
     return file.substring(file.length - 3);
-  }
-
-  const chooseImgForFileFormat = (file) => {
-    
   }
 
   console.log(fileList)
