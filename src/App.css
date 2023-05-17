@@ -22,6 +22,7 @@
 }
 
 .drag-and-drop-wrapper {
+  position: relative;
   margin-top: 60px;
   border: 4px dashed #e7d8ed;
   width: 530px;
@@ -37,7 +38,6 @@
 .drop-file-input__label {
   padding-top: 80px;
   text-align: center;
-  /* filter: opacity(0.5) drop-shadow(0 0 #e7d8ed); */
 }
 
 .drop-file-input__label p{
@@ -58,8 +58,38 @@
   opacity: 0;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0; 
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
+
+.drag-and-drop-wrapper:hover,
+.drag-and-drop-wrapper.dragover {
+    opacity: 0.6;
+}
+
+.file-list-container {
+  margin-top: ;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.file {
+  font-weight: 600;
+  font-size: 14px;
+  color: #D2B7DF;
+}
+
+.file span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #A8D1DE;
+  margin-left: 10px;
+}
+
+.file-list-container .file + .file-list-container .file  {
+  padding-top: 5px;
+}
+
