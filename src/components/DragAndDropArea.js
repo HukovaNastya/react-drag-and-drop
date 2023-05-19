@@ -9,7 +9,7 @@ const DragAndDropArea = ({onFileDrop, onDragEnter, onDragLeave, onDrop, dragDrop
           <UploadImg/>
           <p>Drag & Drop your files <span>here or Click to browse file</span></p>
         </div>
-        <input type="file" value="" onChange={onFileDrop}/>
+        <input type="file" value="" multiple onChange={onFileDrop}/>
     </div>
   )
 }

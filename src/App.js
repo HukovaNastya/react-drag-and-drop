@@ -4,9 +4,17 @@ import './App.css';
 import DragAndDropArea from './components/DragAndDropArea';
 import DragAndDropFileList  from './components/DragAndDropFileList';
 
+// TODO dragDropClass and setDragDropClass move to the DragAndDropArea and also related events handler
+// TODO remove dragDropClass prop
+
+const findFileFormat = (file) => {
+  // TODO add regular expression
+  return file.substring(file.length - 3);
+}
+
 function App() {
   const [fileList, setFileList] = useState([]);
-  const [fileFormat, setFileFormat] = useState([]);
+  const [fileFormat, setFileFormat] = useState([]); // TODO remove this line
   const [dragDropClass, setDragDropClass] = useState('drag-and-drop-wrapper');
   const onDragEnter = () => {
     setDragDropClass('drag-and-drop-wrapper dragover')
@@ -21,16 +29,15 @@ function App() {
   }
 
   const onFileDrop = (e) => {
+    console.log('files', e.target.files)
+    // TODO add support multiple files
+    // TODO check files.length to identify multiple files upload
+    // TODO use one array of objects for filesList, [{ name, size, format }]
     const newFile = e.target.files[0];
-    setFileFormat(findFileFormat(newFile.name))
+    setFileFormat(findFileFormat(newFile.name)) // TODO remove this line
     if (newFile) {
-      const updatedList = [...fileList, newFile];
-      setFileList(updatedList);
+      setFileList([...fileList, newFile]);
     }
-  }
-
-  const findFileFormat = (file) => {
-    return file.substring(file.length - 3);
   }
 
   return (
@@ -43,13 +50,13 @@ function App() {
         </span>
       </p>
       <DragAndDropArea 
-        onFileDrop ={onFileDrop} 
+        onFileDrop={onFileDrop}
         onDragEnter={onDragEnter} 
         onDragLeave={onDragLeave} 
         onDrop={onDrop} 
         dragDropClass={dragDropClass}
       />
-      <DragAndDropFileList fileList = {fileList} fileFormat={fileFormat}/>
+      <DragAndDropFileList fileList={fileList} fileFormat={fileFormat}/>
     </div>
   );
 }
