@@ -69,11 +69,21 @@
     opacity: 0.6;
 }
 
+.drag-and-drop-wrapper.drop {
+  border: 4px dashed #A8D1DE;
+}
+
 .file-list-container {
-  margin-top: ;
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.file-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .file {
@@ -89,7 +99,6 @@
   margin-left: 10px;
 }
 
-.file-list-container .file + .file-list-container .file  {
-  padding-top: 5px;
+.file-list-container li + li  {
+  margin-top: 0px;
 }
-

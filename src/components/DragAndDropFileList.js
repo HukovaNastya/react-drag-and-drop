@@ -1,14 +1,26 @@
 import React from 'react';
 import '../App.css';
+import anotherTypeOfFile from '../assets/img/default-file.png';
+import fileSvg from '../assets/img/svg-icon.png';
+import filePng from '../assets/img/png-icon.png';
 
 const DragAndDropFileList = ({fileList, fileFormat}) => {
   return (
     <>
-    <div className='file-list-container'>
+    <ul className='file-list-container'>
         {fileList.length
         ? fileList.map((file, index) => {
-            console.log(file)
             return (
+              <li className='file-wrapper' key={index}>
+                <img 
+                  src={fileFormat === 'png' ? 
+                  filePng : fileFormat === 'svg'? 
+                  fileSvg : 
+                  anotherTypeOfFile} 
+                  alt="#" 
+                  width="30px"
+                  height="30px"
+                />
                 <div className='file' key={index}>
                   <h2>
                     {file.name} 
@@ -16,12 +28,12 @@ const DragAndDropFileList = ({fileList, fileFormat}) => {
                       {file.size}px
                     </span>
                   </h2>
-                  {/* <h3>{fileFormat}</h3> */}
                 </div>
+              </li>
             )
           })
         : null}
-    </div>
+    </ul>
     </>
   )
 }
