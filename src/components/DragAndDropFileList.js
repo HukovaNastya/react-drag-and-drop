@@ -1,14 +1,23 @@
 import React from 'react';
 import '../App.css';
-import anotherTypeOfFile from '../assets/img/default-file.png';
+import defaultImg from '../assets/img/default-file.png';
 import fileSvg from '../assets/img/svg-icon.png';
 import filePng from '../assets/img/png-icon.png';
 
-// TODO create a function which returns image file depends on file format. And remove ternary expression from JSX
-
-const DragAndDropFileList = ({fileList, fileFormat}) => {
+const DragAndDropFileList = ({fileList}) => {
   if (!fileList.length) {
-    return null
+    return null;
+  }
+
+  const chooseFileFormatForImg = (format) => {
+    switch(format) {
+      case 'png' :
+        return filePng;
+      case 'svg':
+      return fileSvg;
+      default:
+        return defaultImg;
+    }
   }
 
   return (
@@ -17,10 +26,7 @@ const DragAndDropFileList = ({fileList, fileFormat}) => {
         fileList.map((file, index) => (
             <li className='file-wrapper' key={index}>
               <img
-                  src={fileFormat === 'png' ?
-                      filePng : fileFormat === 'svg'?
-                          fileSvg :
-                          anotherTypeOfFile}
+                  src={chooseFileFormatForImg(file.format)}
                   alt="#"
                   width="30px"
                   height="30px"
