@@ -6,7 +6,12 @@ import DragAndDropFileList  from './components/DragAndDropFileList';
 
 const findFileFormat = (file) => {
   // TODO add regular expression
-  return file.substring(file.length - 3);
+  let fileExtention = file.split(".");
+  return fileExtention[fileExtention.length-1];
+}
+
+const makeFormObjectArray = (obj) => {
+  return Array.from(obj);
 }
 
 function App() {
@@ -17,8 +22,9 @@ function App() {
     if (e.target.files.length === 0) {
       return;
     }
-    Array.from(e.target.files).map(file => {
+    makeFormObjectArray(e.target.files).map(file => {
       let formatOfFile = findFileFormat(file.name);
+      // console.log(file.name.split("."))
       uploaded.push({name: file.name, size: file.size, format: formatOfFile});
       return uploaded;
     })

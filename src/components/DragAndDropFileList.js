@@ -3,6 +3,7 @@ import '../App.css';
 import defaultImg from '../assets/img/default-file.png';
 import fileSvg from '../assets/img/svg-icon.png';
 import filePng from '../assets/img/png-icon.png';
+import fileZip from '../assets/img/zipImg.png';
 
 const DragAndDropFileList = ({fileList}) => {
   if (!fileList.length) {
@@ -14,7 +15,9 @@ const DragAndDropFileList = ({fileList}) => {
       case 'png' :
         return filePng;
       case 'svg':
-      return fileSvg;
+        return fileSvg;
+      case 'zip':
+        return fileZip;
       default:
         return defaultImg;
     }
