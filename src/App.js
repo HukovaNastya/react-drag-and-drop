@@ -4,6 +4,8 @@ import './App.css';
 import DragAndDropArea from './components/DragAndDropArea';
 import DragAndDropFileList  from './components/DragAndDropFileList';
 
+// TODO try to use React.memo for component in the list
+
 const findFileFormat = (file) => {
   // TODO add regular expression
   let fileExtention = file.split(".");

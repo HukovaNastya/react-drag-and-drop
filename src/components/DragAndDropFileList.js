@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import '../App.css';
 import defaultImg from '../assets/img/default-file.png';
 import fileSvg from '../assets/img/svg-icon.png';
 import filePng from '../assets/img/png-icon.png';
 import fileZip from '../assets/img/zipImg.png';
 
-const DragAndDropFileList = ({fileList}) => {
+const DragAndDropFileList = ({ fileList }) => {
   if (!fileList.length) {
     return null;
   }
@@ -22,7 +22,8 @@ const DragAndDropFileList = ({fileList}) => {
         return defaultImg;
     }
   }
-
+  // TODO move li to the separate component FileListItem.js
+  // TODO rename DragAndDropFileList.js to FileList.js
   return (
     <ul className='file-list-container'>
       {
