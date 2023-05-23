@@ -11,6 +11,7 @@ const findFileFormat = (file) => {
 }
 
 const makeFormObjectArray = (obj) => {
+  //  additional logic
   return Array.from(obj);
 }
 
@@ -18,17 +19,18 @@ function App() {
   const [fileList, setFileList] = useState([]);
 
   const onFileDrop = (e) => {
-    const uploaded = [...fileList]
     if (e.target.files.length === 0) {
       return;
     }
-    makeFormObjectArray(e.target.files).map(file => {
-      let formatOfFile = findFileFormat(file.name);
-      // console.log(file.name.split("."))
-      uploaded.push({name: file.name, size: file.size, format: formatOfFile});
-      return uploaded;
-    })
-    return setFileList(uploaded)
+
+    // const newUploadFilesArray = makeFormObjectArray(e.target.files).map(file => {
+    //   let formatOfFile = findFileFormat(file.name);
+    //   return { name: file.name, size: file.size, format: formatOfFile }
+    // })
+
+    const newUploadFilesArray = makeFormObjectArray(e.target.files).map(({ name, size }) => ({ name, size, format: findFileFormat(name) }))
+
+    setFileList([...fileList, ...newUploadFilesArray])
   }
 
   return (

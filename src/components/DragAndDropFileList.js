@@ -34,7 +34,7 @@ const DragAndDropFileList = ({fileList}) => {
                   width="30px"
                   height="30px"
               />
-              <div className='file' key={index}>
+              <div className='file'>
                 <h2>
                   {file.name}
                   <span>{file.size}px</span>
