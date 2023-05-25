@@ -4,8 +4,9 @@ import defaultImg from '../assets/img/default-file.png';
 import fileSvg from '../assets/img/svg-icon.png';
 import filePng from '../assets/img/png-icon.png';
 import fileZip from '../assets/img/zipImg.png';
+import FileItem from './FileItem';
 
-const DragAndDropFileList = ({ fileList }) => {
+const FileList = ({ fileList }) => {
   if (!fileList.length) {
     return null;
   }
@@ -29,18 +30,7 @@ const DragAndDropFileList = ({ fileList }) => {
       {
         fileList.map((file, index) => (
             <li className='file-wrapper' key={index}>
-              <img
-                  src={chooseFileFormatForImg(file.format)}
-                  alt="#"
-                  width="30px"
-                  height="30px"
-              />
-              <div className='file'>
-                <h2>
-                  {file.name}
-                  <span>{file.size}px</span>
-                </h2>
-              </div>
+              <FileItem chooseFileFormatForImg={chooseFileFormatForImg} file={file}/>
             </li>
         ))
       }
@@ -48,4 +38,4 @@ const DragAndDropFileList = ({ fileList }) => {
   )
 }
 
-export default DragAndDropFileList;
+export default FileList;

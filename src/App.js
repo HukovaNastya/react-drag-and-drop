@@ -2,7 +2,7 @@ import React, {useState, } from 'react';
 import Title from './components/Title';
 import './App.css';
 import DragAndDropArea from './components/DragAndDropArea';
-import DragAndDropFileList  from './components/DragAndDropFileList';
+import FileList  from './components/FileList';
 
 // TODO try to use React.memo for component in the list
 
@@ -13,7 +13,7 @@ const findFileFormat = (file) => {
 }
 
 const makeFormObjectArray = (obj) => {
-  //  additional logic
+  if(typeof obj !== "object") return;
   return Array.from(obj);
 }
 
@@ -47,7 +47,7 @@ function App() {
       <DragAndDropArea 
         onFileDrop={onFileDrop}
       />
-      <DragAndDropFileList fileList={fileList} />
+      <FileList fileList={fileList} />
     </div>
   );
 }
