@@ -1,23 +1,53 @@
-import logo from './logo.svg';
+import React, {useState, } from 'react';
+import Title from './components/Title';
 import './App.css';
+import DragAndDropArea from './components/DragAndDropArea';
+import FileList  from './components/FileList';
+
+// TODO try to use React.memo for component in the list
+
+const findFileFormat = (file) => {
+  // TODO add regular expression
+  let fileExtention = file.split(".");
+  return fileExtention[fileExtention.length-1];
+}
+
+const makeFormObjectArray = (obj) => {
+  if(typeof obj !== "object") return;
+  return Array.from(obj);
+}
 
 function App() {
+  const [fileList, setFileList] = useState([]);
+
+  const onFileDrop = (e) => {
+    if (e.target.files.length === 0) {
+      return;
+    }
+
+    // const newUploadFilesArray = makeFormObjectArray(e.target.files).map(file => {
+    //   let formatOfFile = findFileFormat(file.name);
+    //   return { name: file.name, size: file.size, format: formatOfFile }
+    // })
+
+    const newUploadFilesArray = makeFormObjectArray(e.target.files).map(({ name, size }) => ({ name, size, format: findFileFormat(name) }))
+
+    setFileList([...fileList, ...newUploadFilesArray])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title text="Drag to upload"/>
+      <p className="drag-and-drop-paragraph">
+        You can drag your fi
+        <span className='drag-and-drop-span'>
+        le to a certain area to upload it.
+        </span>
+      </p>
+      <DragAndDropArea 
+        onFileDrop={onFileDrop}
+      />
+      <FileList fileList={fileList} />
     </div>
   );
 }
